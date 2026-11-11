@@ -14,6 +14,7 @@ $pex  = "https://primary.jwwb.nl/pexels/"
 $images = [ordered]@{
   # Accueil
   "accueil/hero-accueil.webp"                  = $cdn + "creaclick_03-standard-psvulv.webp"
+  # NB : l'original a des bandes noires ; le site utilise une version recadrée (sources/img/accueil/engagements-scene.png)
   "accueil/engagements.png"                    = $cdn + "img_0673-standard.png"
   # Prestations
   "prestations/hero-prestations.webp"          = $cdn + "creaclick_04-standard-cm1xfh.webp"
