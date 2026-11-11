@@ -69,11 +69,16 @@
         <div>
           <h2>Demande de devis</h2>
           <!--
-            TODO : brancher le formulaire sur un service d'envoi
-            (Formspree, Netlify Forms, Web3Forms ou script PHP chez l'hébergeur).
-            Remplacer l'attribut action ci-dessous.
+            Envoi via Web3Forms (https://web3forms.com) : les demandes arrivent par e-mail.
+            La clé access_key est publique par conception (elle ne permet que d'envoyer vers l'adresse enregistrée).
+            Avec JavaScript : envoi en AJAX (assets/js/contact.js) puis redirection vers /contact/merci/.
+            Sans JavaScript : envoi classique, Web3Forms affiche sa propre page de confirmation.
           -->
-          <form class="form" action="#" method="post">
+          <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="post">
+            <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="Nouvelle demande de devis – creaclickagency.com">
+            <input type="hidden" name="from_name" value="Site CreaClick Agency">
+            <input type="hidden" name="redirect" value="https://www.creaclickagency.com/contact/merci/">
             <div class="full">
               <label for="nom">Nom et prénom *</label>
               <input id="nom" name="nom" type="text" autocomplete="name" required>
@@ -119,12 +124,14 @@
               <label for="message">Votre message *</label>
               <textarea id="message" name="message" required></textarea>
             </div>
+            <!-- Pot de miel anti-spam : les robots cochent cette case, Web3Forms rejette alors l'envoi -->
             <div class="hp" aria-hidden="true">
-              <label for="website">Laisser ce champ vide</label>
-              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+              <label for="botcheck">Ne pas cocher</label>
+              <input id="botcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off">
             </div>
             <p class="full form-note">Les champs marqués * sont obligatoires. Vos données sont utilisées uniquement pour répondre à votre demande (<a href="/politique-de-confidentialite/">politique de confidentialité</a>).</p>
             <div class="full"><button class="btn" type="submit">Envoyer ma demande</button></div>
+            <p class="full form-status" role="status" aria-live="polite" hidden></p>
           </form>
         </div>
 
@@ -172,5 +179,6 @@
   </footer>
 
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/contact.js" defer></script>
 </body>
 </html>

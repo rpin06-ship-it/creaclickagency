@@ -62,8 +62,8 @@ Les liens sont absolus (`/assets/...`) : il faut passer par un serveur, pas ouvr
 ## À faire (par priorité)
 
 1. **Mentions légales et politique de confidentialité** : remplir les champs `[À COMPLÉTER]` (obligation légale).
-2. **Formulaire de contact** : le brancher sur un service d'envoi (Formspree, Web3Forms, Netlify Forms ou PHP),
-   puis mettre à jour l'attribut `action` dans `contact/index.html`.
+2. **Formulaire de contact** : branché sur Web3Forms (`assets/js/contact.js`, page `/contact/merci/`).
+   Reste à remplacer `WEB3FORMS_ACCESS_KEY` dans `contact/index.html` par la clé reçue sur https://web3forms.com.
 3. **Lien Instagram** : remplacer `https://www.instagram.com/` par l'URL du compte (dans toutes les pages).
 4. ~~Poids des images~~ : fait (WebP, −43 % ; page Réalisations : 8,8 Mo → 1,5 Mo).
 5. **Textes alternatifs** des 30 photos de la galerie Réalisations : décrire chaque événement.
