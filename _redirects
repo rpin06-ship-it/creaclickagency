@@ -1,0 +1,4 @@
+# Redirections Netlify / Cloudflare Pages (anciennes URL Webador)
+/informations-1             /informations/                301
+/equipe                     /equipes/                     301
+/sponsoring-partenariats    /sponsoring-et-partenariats/  301

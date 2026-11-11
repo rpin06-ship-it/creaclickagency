@@ -1,0 +1,8 @@
+# Fins de ligne homogènes (LF) quel que soit le poste
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# Fichiers binaires
+*.webp binary
+*.jpg  binary
+*.png  binary

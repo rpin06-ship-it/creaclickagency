@@ -1,0 +1,10 @@
+# Images originales (lourdes) : conservées en local, régénérables via scripts/recuperer-images.ps1
+sources/
+
+# Système / éditeurs
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+__pycache__/

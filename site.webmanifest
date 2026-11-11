@@ -1,0 +1,12 @@
+{
+  "name": "CreaClick Agency",
+  "short_name": "CreaClick",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbf8f3",
+  "theme_color": "#15130f",
+  "icons": [
+    { "src": "/assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

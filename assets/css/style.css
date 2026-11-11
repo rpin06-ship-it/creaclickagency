@@ -1,0 +1,274 @@
+/* ==========================================================================
+   CreaClick Agency – feuille de style principale
+   Sommaire :
+   1. Variables (couleurs, typo, espacements)
+   2. Reset & base
+   3. Utilitaires (container, skip-link, boutons)
+   4. En-tête & navigation
+   5. Hero
+   6. Sections & grilles
+   7. Composants (cartes, tags, checklist, étapes, formules, galerie, FAQ, formulaire)
+   8. Pied de page
+   9. Responsive
+   ========================================================================== */
+
+/* 1. Variables ------------------------------------------------------------ */
+:root {
+  --c-ink: #1c1a17;          /* texte principal */
+  --c-ink-soft: #57524a;     /* texte secondaire */
+  --c-bg: #fbf8f3;           /* fond crème */
+  --c-bg-alt: #f2ece2;       /* fond sections alternées */
+  --c-dark: #15130f;         /* fond sombre (header/footer/cta) */
+  --c-gold: #b08d57;         /* accent doré */
+  --c-gold-dark: #8c6d3f;
+  --c-line: #e2d9cb;
+  --c-white: #fff;
+
+  --f-title: "Cormorant Garamond", Georgia, serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 4px;
+  --space: clamp(3.5rem, 8vw, 6.5rem);
+  --container: 1180px;
+  --header-h: 76px;
+}
+
+/* 2. Reset & base --------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--c-ink);
+  background: var(--c-bg);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--c-gold-dark); }
+a:hover { color: var(--c-ink); }
+h1, h2, h3, h4 {
+  font-family: var(--f-title);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 .6em;
+}
+h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+h3, .h3 { font-size: 1.5rem; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 3px; }
+
+/* 3. Utilitaires ---------------------------------------------------------- */
+.container { width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+.skip-link {
+  position: absolute; left: 1rem; top: -100px; z-index: 100;
+  background: var(--c-gold); color: var(--c-white); padding: .6rem 1rem;
+}
+.skip-link:focus { top: 1rem; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.eyebrow {
+  font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--c-gold); font-weight: 600; margin-bottom: .8rem;
+}
+.lead { font-size: 1.15rem; color: inherit; opacity: .9; max-width: 60ch; }
+.text-center { text-align: center; }
+.text-center .lead { margin-inline: auto; }
+
+.btn {
+  display: inline-block;
+  padding: .9rem 1.8rem;
+  border: 1px solid var(--c-gold);
+  background: var(--c-gold);
+  color: var(--c-white);
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background .2s, color .2s, border-color .2s;
+  cursor: pointer;
+  font: inherit;
+}
+.btn:hover { background: var(--c-gold-dark); border-color: var(--c-gold-dark); color: var(--c-white); }
+.btn-ghost { background: transparent; color: var(--c-white); border-color: rgba(255,255,255,.7); }
+.btn-ghost:hover { background: var(--c-white); color: var(--c-ink); border-color: var(--c-white); }
+.btn-outline { background: transparent; color: var(--c-gold-dark); }
+.btn-outline:hover { background: var(--c-gold); color: var(--c-white); }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+
+/* 4. En-tête & navigation ------------------------------------------------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(21, 19, 15, .96);
+  backdrop-filter: blur(6px);
+  color: var(--c-white);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: var(--header-h); gap: 1rem;
+}
+.logo {
+  font-family: var(--f-title); font-size: 1.6rem; font-weight: 600;
+  color: var(--c-white); text-decoration: none; margin: 0; letter-spacing: .02em;
+}
+.logo span { color: var(--c-gold); }
+.logo:hover { color: var(--c-white); }
+.main-nav ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+.main-nav a {
+  color: rgba(255,255,255,.85); text-decoration: none; font-size: .92rem;
+  padding: .3rem 0; border-bottom: 1px solid transparent;
+}
+.main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--c-white); border-color: var(--c-gold); }
+.nav-toggle {
+  display: none; background: none; border: 1px solid rgba(255,255,255,.5);
+  color: var(--c-white); padding: .45rem .9rem; font: inherit; border-radius: var(--radius); cursor: pointer;
+}
+
+/* 5. Hero ----------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: min(88vh, 760px);
+  display: flex; align-items: center;
+  color: var(--c-white);
+  background: var(--c-dark) var(--hero-img) center / cover no-repeat;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(10,9,7,.78) 0%, rgba(10,9,7,.35) 100%);
+}
+.hero-content { position: relative; padding-block: 5rem; }
+.hero h1 { max-width: 18ch; }
+.hero--page { min-height: 52vh; }
+.hero--page h1 { max-width: 22ch; }
+
+/* 6. Sections & grilles --------------------------------------------------- */
+.section { padding-block: var(--space); }
+.section-alt { background: var(--c-bg-alt); }
+.section-head { max-width: 720px; margin-bottom: 3rem; }
+.section-head.text-center { margin-inline: auto; }
+.two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.two-cols > *, .grid-2 > *, .grid-3 > *, .step > *, .form > * { min-width: 0; }
+.two-cols img { border-radius: var(--radius); width: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+.two-cols--reverse > :first-child { order: 2; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+
+.cta { background: var(--c-dark); color: var(--c-white); text-align: center; }
+.cta p { opacity: .85; max-width: 60ch; margin-inline: auto; }
+.cta .actions { justify-content: center; }
+
+/* 7. Composants ----------------------------------------------------------- */
+/* Cartes */
+.cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; counter-reset: card; }
+.cards-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-4 { grid-template-columns: repeat(4, 1fr); }
+.card {
+  background: var(--c-white); padding: 2rem 1.6rem; border-top: 2px solid var(--c-gold);
+  border-radius: var(--radius); box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+ol.cards .card { counter-increment: card; }
+ol.cards .card::before {
+  content: "0" counter(card); display: block; font-family: var(--f-title);
+  font-size: 2rem; color: var(--c-gold); margin-bottom: .4rem;
+}
+.card p { color: var(--c-ink-soft); margin: 0; }
+.card img { margin: -2rem -1.6rem 1.5rem; width: calc(100% + 3.2rem); max-width: none; aspect-ratio: 3 / 2; object-fit: cover; }
+
+/* Tags */
+.tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.tags li { border: 1px solid var(--c-gold); color: var(--c-gold-dark); padding: .4rem 1rem; border-radius: 99px; font-size: .9rem; }
+
+/* Checklist */
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { padding: .8rem 0 .8rem 2rem; position: relative; border-bottom: 1px solid var(--c-line); }
+.checklist li::before { content: "✦"; position: absolute; left: 0; color: var(--c-gold); }
+
+/* Étapes (process) */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 2.5rem; counter-reset: step; }
+.step { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; counter-increment: step; }
+.step:nth-child(even) > :first-child { order: 2; }
+.step img { border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.step h3::before { content: "Étape " counter(step) " — "; color: var(--c-gold); }
+
+/* Formules / tarifs */
+.pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
+.plan {
+  background: var(--c-white); border: 1px solid var(--c-line); border-radius: var(--radius);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.plan img { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+.plan-body { padding: 2rem; display: flex; flex-direction: column; flex: 1; }
+.plan-price { font-family: var(--f-title); font-size: 1.6rem; color: var(--c-gold-dark); margin-bottom: .3rem; }
+.plan-target { color: var(--c-ink-soft); font-style: italic; }
+.plan ul { padding-left: 1.1rem; margin: 0 0 1.5rem; }
+.plan .btn { margin-top: auto; align-self: flex-start; }
+.plan--featured { border-color: var(--c-gold); box-shadow: 0 10px 30px rgba(176,141,87,.18); }
+
+/* Galerie */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); transition: transform .4s; }
+.gallery a { display: block; overflow: hidden; border-radius: var(--radius); }
+.gallery a:hover img { transform: scale(1.04); }
+
+/* FAQ */
+.faq details { border-bottom: 1px solid var(--c-line); padding: 1.2rem 0; }
+.faq summary { cursor: pointer; font-weight: 600; list-style: none; position: relative; padding-right: 2rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 0; color: var(--c-gold); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin: .8rem 0 0; color: var(--c-ink-soft); }
+
+/* Formulaire */
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.5rem; }
+.form .full { grid-column: 1 / -1; }
+.form label { display: block; font-size: .9rem; font-weight: 500; margin-bottom: .35rem; }
+.form input, .form select, .form textarea {
+  width: 100%; padding: .8rem 1rem; font: inherit; color: inherit;
+  background: var(--c-white); border: 1px solid var(--c-line); border-radius: var(--radius);
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--c-gold); outline: none; }
+.form textarea { min-height: 160px; resize: vertical; }
+.form .hp { position: absolute; left: -9999px; }
+.form-note { font-size: .85rem; color: var(--c-ink-soft); }
+.contact-info { list-style: none; padding: 0; margin: 0; }
+.contact-info li { padding: .5rem 0; }
+
+/* Pages légales / texte long */
+.prose { max-width: 780px; }
+.prose h2 { font-size: 1.7rem; margin-top: 2.5rem; }
+
+/* 8. Pied de page --------------------------------------------------------- */
+.site-footer { background: var(--c-dark); color: rgba(255,255,255,.75); padding-block: 3.5rem 2rem; font-size: .92rem; }
+.site-footer a { color: rgba(255,255,255,.85); text-decoration: none; }
+.site-footer a:hover { color: var(--c-gold); }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+.footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; align-content: start; }
+.copyright { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.12); padding-top: 1.5rem; margin: 1rem 0 0; font-size: .82rem; }
+
+/* 9. Responsive ----------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .nav-toggle { display: block; }
+  .main-nav {
+    position: absolute; top: var(--header-h); left: 0; right: 0;
+    background: var(--c-dark); display: none; padding: 1rem 0 1.5rem;
+  }
+  .main-nav.is-open { display: block; }
+  .main-nav ul { flex-direction: column; gap: 0; width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+  .main-nav a { display: block; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .cards-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 820px) {
+  .two-cols, .step, .grid-2, .grid-3, .cards-3, .pricing, .form, .footer-inner { grid-template-columns: 1fr; }
+  .two-cols--reverse > :first-child, .step:nth-child(even) > :first-child { order: 0; }
+}
+@media (max-width: 520px) {
+  .cards-4 { grid-template-columns: 1fr; }
+  .actions .btn { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
